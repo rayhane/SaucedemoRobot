@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.1 on win32)" generated="2026-06-18T16:51:47.791317" rpa="false" schemaversion="5">
+<suite id="s1" name="Cart" source="C:\Users\lenovo\projectro\test\cart.robot">
+<kw name="Ouvrir Le Navigateur" owner="keywords" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-06-18T16:51:48.326283" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001F687D74D70&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-06-18T16:51:48.320949" elapsed="0.005411"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--incognito</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-06-18T16:51:48.326617" elapsed="0.000463"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:48.330294" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-06-18T16:51:48.329750" elapsed="4.620172"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-06-18T16:51:52.950193" elapsed="0.146725"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-06-18T16:51:53.097154" elapsed="0.008914"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:51:48.319993" elapsed="4.786228"/>
+</kw>
+<test id="s1-t1" name="TC01 - Ajouter Un Produit Au Panier" line="12">
+<kw name="Se Connecter" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:53.113580" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T16:51:53.113079" elapsed="0.709584"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:53.823274" level="INFO">Typing text 'secret_sauce' into text field 'id:password'.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T16:51:53.822926" elapsed="0.301316"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:54.124773" level="INFO">Clicking element 'id:login-button'.</msg>
+<arg>${LOGIN_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.124477" elapsed="0.277860"/>
+</kw>
+<arg>${VALID_USER}</arg>
+<arg>${VALID_PASS}</arg>
+<status status="PASS" start="2026-06-18T16:51:53.112303" elapsed="1.290203"/>
+</kw>
+<kw name="La Page Produits Doit Etre Visible" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PRODUCTS_TITLE}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.409145" elapsed="0.144389"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:54.554124" level="INFO">Verifying element 'css:.title' contains exact text 'Products'.</msg>
+<arg>${PRODUCTS_TITLE}</arg>
+<arg>Products</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.553798" elapsed="0.026323"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:51:54.406478" elapsed="0.173816"/>
+</kw>
+<kw name="Ajouter Au Panier" owner="keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:54.581362" level="INFO">Clicking element 'id:add-to-cart-sauce-labs-backpack'.</msg>
+<arg>${add_btn_id}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.581110" elapsed="0.161803"/>
+</kw>
+<arg>${ADD_BACKPACK_BTN}</arg>
+<status status="PASS" start="2026-06-18T16:51:54.580685" elapsed="0.163189"/>
+</kw>
+<kw name="Aller Au Panier" owner="keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:54.745044" level="INFO">Clicking element 'css:.shopping_cart_link'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.744788" elapsed="0.169326"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CART_ITEM_NAME}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.914345" elapsed="0.044642"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:51:54.744390" elapsed="0.214747"/>
+</kw>
+<kw name="Le Panier Doit Contenir" owner="keywords">
+<kw name="Element Should Contain" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:55.007636" level="INFO">Element 'css:.inventory_item_name' contains text 'Sauce Labs Backpack'.</msg>
+<arg>${CART_ITEM_NAME}</arg>
+<arg>${product}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<status status="PASS" start="2026-06-18T16:51:54.960052" elapsed="0.047735"/>
+</kw>
+<arg>${PRODUCT_NAME}</arg>
+<status status="PASS" start="2026-06-18T16:51:54.959575" elapsed="0.048381"/>
+</kw>
+<kw name="Capture Si Echec" owner="keywords" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" owner="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<arg>../reports/echec_${TEST NAME}_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2026-06-18T16:51:55.008863" elapsed="0.000415"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:51:55.008481" elapsed="0.000916"/>
+</kw>
+<doc>Ajoute le Backpack → vérifie qu'il est dans le panier</doc>
+<tag>cart</tag>
+<tag>positif</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-06-18T16:51:53.106387" elapsed="1.903206"/>
+</test>
+<test id="s1-t2" name="TC02 - Supprimer Un Produit Du Panier" line="21">
+<kw name="Se Connecter" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:51:55.012236" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<msg time="2026-06-18T16:52:05.863536" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-26.png"&gt;&lt;img src="selenium-screenshot-26.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-06-18T16:52:05.863766" level="FAIL">Element with locator 'id:user-name' not found.</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${user}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="FAIL" start="2026-06-18T16:51:55.011944" elapsed="10.898082">Element with locator 'id:user-name' not found.</status>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-06-18T16:52:05.910310" elapsed="0.000047"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${LOGIN_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-06-18T16:52:05.910488" elapsed="0.000052"/>
+</kw>
+<arg>${VALID_USER}</arg>
+<arg>${VALID_PASS}</arg>
+<status status="FAIL" start="2026-06-18T16:51:55.011524" elapsed="10.899216">Element with locator 'id:user-name' not found.</status>
+</kw>
+<kw name="La Page Produits Doit Etre Visible" owner="keywords">
+<status status="NOT RUN" start="2026-06-18T16:52:05.922838" elapsed="0.000294"/>
+</kw>
+<kw name="Ajouter Au Panier" owner="keywords">
+<arg>${ADD_BACKPACK_BTN}</arg>
+<status status="NOT RUN" start="2026-06-18T16:52:05.927669" elapsed="0.000209"/>
+</kw>
+<kw name="Aller Au Panier" owner="keywords">
+<status status="NOT RUN" start="2026-06-18T16:52:05.933171" elapsed="0.000072"/>
+</kw>
+<kw name="Supprimer Du Panier" owner="keywords">
+<status status="NOT RUN" start="2026-06-18T16:52:05.946340" elapsed="0.000068"/>
+</kw>
+<kw name="Le Panier Doit Etre Vide" owner="keywords">
+<status status="NOT RUN" start="2026-06-18T16:52:05.950629" elapsed="0.000089"/>
+</kw>
+<kw name="Capture Si Echec" owner="keywords" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-06-18T16:52:06.178564" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../reports/echec_TC02%20-%20Supprimer%20Un%20Produit%20Du%20Panier_5.png"&gt;&lt;img src="../reports/echec_TC02%20-%20Supprimer%20Un%20Produit%20Du%20Panier_5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>../reports/echec_${TEST NAME}_{index}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-06-18T16:52:05.996194" elapsed="0.182502"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<arg>../reports/echec_${TEST NAME}_{index}.png</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2026-06-18T16:52:05.995778" elapsed="0.183134"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:52:05.995347" elapsed="0.183676"/>
+</kw>
+<doc>Ajoute puis supprime → panier vide</doc>
+<tag>cart</tag>
+<tag>negatif</tag>
+<status status="FAIL" start="2026-06-18T16:51:55.010730" elapsed="11.186217">Element with locator 'id:user-name' not found.</status>
+</test>
+<kw name="Fermer Le Navigateur" owner="keywords" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-06-18T16:52:06.314507" elapsed="3.868543"/>
+</kw>
+<status status="PASS" start="2026-06-18T16:52:06.313770" elapsed="3.869462"/>
+</kw>
+<status status="FAIL" start="2026-06-18T16:51:47.793657" elapsed="22.389655"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="1" skip="0">cart</stat>
+<stat pass="0" fail="1" skip="0">negatif</stat>
+<stat pass="1" fail="0" skip="0">positif</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Cart" id="s1" pass="1" fail="1" skip="0">Cart</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
