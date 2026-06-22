@@ -5,6 +5,7 @@ Library        SeleniumLibrary
 
 Suite Setup      Ouvrir Le Navigateur
 Suite Teardown   Fermer Le Navigateur
+Test Setup       Go To    ${URL} 
 Test Teardown    Capture Si Echec
 
 *** Test Cases ***
