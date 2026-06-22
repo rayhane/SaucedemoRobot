@@ -7,6 +7,7 @@ Suite Setup      Ouvrir Le Navigateur
 #doit etre executé une seule fois pour tout les tests
 Suite Teardown   Fermer Le Navigateur
 #doit etre executé aprés chaque test
+Test Setup       Go To    ${URL} 
 Test Teardown    Capture Si Echec
 
 *** Test Cases ***

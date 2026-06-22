@@ -120,3 +120,9 @@ Finaliser La Commande
 La Commande Doit Etre Confirmee
     Wait Until Element Is Visible    ${SUCCESS_MSG}    ${TIMEOUT}
     Element Text Should Be           ${SUCCESS_MSG}    Thank you for your order!
+
+
+ Reinitialiser Session
+    Delete All Cookies
+    Go To    ${URL}
+    Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}   
