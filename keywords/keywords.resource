@@ -59,6 +59,7 @@ Capture Si Echec
 
 Se Connecter
     [Arguments]    ${user}    ${password}
+    Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}
     Input Text     ${USERNAME_FIELD}    ${user}
     Input Text     ${PASSWORD_FIELD}    ${password}
     Click Element  ${LOGIN_BTN}
