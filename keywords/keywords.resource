@@ -122,7 +122,9 @@ La Commande Doit Etre Confirmee
     Element Text Should Be           ${SUCCESS_MSG}    Thank you for your order!
 
 
- Reinitialiser Session
-    Delete All Cookies
-    Go To    ${URL}
-    Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}   
+Reinitialiser Session
+      Go To    ${URL}
+    ${login_visible}=    Run Keyword And Return Status
+    ...    Element Should Be Visible    ${USERNAME_FIELD}
+    Run Keyword If    not ${login_visible}    Se Deconnecter
+    Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}
