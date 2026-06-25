@@ -3,30 +3,30 @@ Library    SeleniumLibrary
 Resource   ../keywords/variables.resource 
 *** Variables ***
 # ── Locators Login ───────────────────────────────
-${USERNAME_FIELD}     id:user-name
-${PASSWORD_FIELD}     id:password
-${LOGIN_BTN}          id:login-button
+${USERNAME_FIELD}     id=user-name
+${PASSWORD_FIELD}     id=password
+${LOGIN_BTN}          id=login-button
 ${ERROR_MSG}          css:[data-test="error"]
 
 # ── Locators Home ────────────────────────────────
 ${PRODUCTS_TITLE}     css:.title
-${MENU_BTN}           id:react-burger-menu-btn
-${LOGOUT_LINK}        id:logout_sidebar_link
+${MENU_BTN}           id=react-burger-menu-btn
+${LOGOUT_LINK}        id=logout_sidebar_link
 
 
 # ── Locators Cart ────────────────────────────────
-${ADD_BACKPACK_BTN}   id:add-to-cart-sauce-labs-backpack
+${ADD_BACKPACK_BTN}   id=add-to-cart-sauce-labs-backpack
 ${CART_ICON}          css:.shopping_cart_link
 ${CART_ITEM_NAME}     css:.inventory_item_name
-${REMOVE_BTN}         id:remove-sauce-labs-backpack
+${REMOVE_BTN}         id=remove-sauce-labs-backpack
 
 # ── Locators Checkout ────────────────────────────
-${CHECKOUT_BTN}       id:checkout
-${FIRST_NAME}         id:first-name
-${LAST_NAME}          id:last-name
-${POSTAL_CODE}        id:postal-code
-${CONTINUE_BTN}       id:continue
-${FINISH_BTN}         id:finish
+${CHECKOUT_BTN}       id=checkout
+${FIRST_NAME}         id=first-name
+${LAST_NAME}          id=last-name
+${POSTAL_CODE}        id=postal-code
+${CONTINUE_BTN}       id=continue
+${FINISH_BTN}         id=finish
 ${SUCCESS_MSG}        css:.complete-header
 
 *** Keywords ***
@@ -123,8 +123,13 @@ La Commande Doit Etre Confirmee
 
 
 Reinitialiser Session
-      Go To    ${URL}
+    Go To    ${URL}
     ${login_visible}=    Run Keyword And Return Status
     ...    Element Should Be Visible    ${USERNAME_FIELD}
-    Run Keyword If    not ${login_visible}    Se Deconnecter
-    Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}
+    IF    ${login_visible}
+        Wait Until Element Is Visible    ${USERNAME_FIELD}    ${TIMEOUT}
+    ELSE
+        Vider Le Panier
+        Go To    ${INVENTORY_URL}
+        Wait Until Element Is Visible    ${ADD_BACKPACK_BTN}    ${TIMEOUT}
+    END

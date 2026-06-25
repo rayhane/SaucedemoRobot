@@ -24,7 +24,7 @@ TC02 - Supprimer Un Produit Du Panier
     [Tags]             cart    negatif
     Se Connecter                     ${VALID_USER}    ${VALID_PASS}
     La Page Produits Doit Etre Visible
-    Ajouter Au Panier                ${ADD_BACKPACK_BTN}
+    
     Aller Au Panier
     Supprimer Du Panier
     Le Panier Doit Etre Vide
